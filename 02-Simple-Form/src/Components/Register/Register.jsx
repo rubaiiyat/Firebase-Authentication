@@ -1,9 +1,13 @@
 import React from "react";
 
 const Register = () => {
+  const handleRegisterForm = (e) => {
+    e.preventDefault();
+    console.log("working");
+  };
   return (
     <div className="w-96 mx-auto">
-      <form action="">
+      <form onClick={handleRegisterForm} action="">
         <input
           type="email"
           placeholder="Enter your email"
