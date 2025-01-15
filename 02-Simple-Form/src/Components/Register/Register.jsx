@@ -3,15 +3,19 @@ import React from "react";
 const Register = () => {
   const handleRegisterForm = (e) => {
     e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
     console.log("working");
+    console.log(email, password);
   };
+
   return (
     <div className="w-96 mx-auto">
-      <form onClick={handleRegisterForm} action="">
+      <form onSubmit={handleRegisterForm}>
         <input
           type="email"
           placeholder="Enter your email"
-          name="password"
+          name="email"
           className="input input-bordered input-primary w-full mb-3"
         />
         <input
