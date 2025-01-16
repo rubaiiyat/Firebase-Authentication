@@ -12,6 +12,22 @@ const Register = () => {
     const password = e.target.password.value;
     console.log(email, password);
 
+    if (password.length < 6) {
+      setRegisterError("Password should be contain atleast 6 character");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError(
+        "Password should be contain atleast one uppercase character"
+      );
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setRegisterError(
+        "Password should be contain atleast one lowercase character"
+      );
+    } else if (!/[0-9]/.test(password)) {
+      setRegisterError("Password should be contain atleast one Number ");
+    }
+
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
@@ -20,7 +36,7 @@ const Register = () => {
         setRegisterSuccess("Account Created Successfully");
       })
       .catch((error) => {
-        setRegisterError(error.message);
+        setRegisterError("Already Registerd using this email");
         setRegisterSuccess("");
       });
   };
