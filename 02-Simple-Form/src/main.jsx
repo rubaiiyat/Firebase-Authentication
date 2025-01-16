@@ -7,6 +7,7 @@ import Home from "./Components/Home/Home.jsx";
 import Login from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
 import About from "./Components/About/About.jsx";
+import TermsAndConditions from "./Components/TermsAndConditions/TermsAndConditions.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/about",
         element: <About></About>,
+      },
+      {
+        path: "/register/terms&conditions",
+        element: <TermsAndConditions></TermsAndConditions>,
       },
     ],
   },

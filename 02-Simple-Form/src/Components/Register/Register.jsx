@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import auth from "../Firebase/Firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [registerError, setRegisterError] = useState("");
@@ -70,7 +71,24 @@ const Register = () => {
           </span>
         </div>
 
-        {/*  */}
+        <label className="flex gap-2 items-center mt-3 mb-3 cursor-pointer">
+          <input
+            type="checkbox"
+            defaultChecked
+            className="checkbox checkbox-primary"
+          />
+          <span className="">
+            I read and agree to{" "}
+            <Link
+              to={"/register/terms&conditions"}
+              className="text-primary  "
+              href=""
+            >
+              <span className=" hover:text-primary">terms and conditions</span>
+            </Link>
+          </span>
+        </label>
+
         <button className="btn btn-primary mt-3 w-full text-xl text-white">
           Register
         </button>
