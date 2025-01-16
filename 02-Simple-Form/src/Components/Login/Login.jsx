@@ -5,6 +5,7 @@ import {
 import React, { useRef, useState } from "react";
 import auth from "../Firebase/Firebase";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginError, setLoginError] = useState("");
@@ -83,10 +84,13 @@ const Login = () => {
             {showPassword ? <FaEyeSlash /> : <FaEye />}
           </span>
         </div>
-        <div className="mt-2 text-start text-white">
+        <div className="mt-2 text-start flex items-center justify-between text-white">
           <a href="" onClick={handleForgotPassword} className="">
             Forgot Password?
           </a>
+          <Link to={"/register"}>
+            Haven't account? <span className="text-primary">register</span>
+          </Link>
         </div>
         <button className="btn btn-primary mt-3 w-full text-xl text-white">
           Login
