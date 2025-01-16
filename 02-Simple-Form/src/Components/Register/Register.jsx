@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
 } from "firebase/auth";
 import React, { useState } from "react";
 import auth from "../Firebase/Firebase";
@@ -14,6 +15,7 @@ const Register = () => {
 
   const handleRegisterForm = (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const checked = e.target.terms.checked;
@@ -47,6 +49,10 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
 
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: "https://example.com/jane-q-user/profile.jpg",
+        });
         sendEmailVerification(result.user).then((result) => {
           setRegisterSuccess(
             "Account Created Successfully. Please check your email and verify the account"
@@ -63,6 +69,12 @@ const Register = () => {
       <h1 className="text-red-400 mt-2 mb-2">{registerError}</h1>
       <h1 className="text-green-400 mt-2 mb-2">{registerSuccess}</h1>
       <form onSubmit={handleRegisterForm}>
+        <input
+          type="text"
+          placeholder="Enter your full name"
+          name="name"
+          className="input input-bordered input-primary w-full mb-3"
+        />
         <input
           type="email"
           placeholder="Enter your email"
