@@ -13,7 +13,11 @@ const Register = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    const checked = e.target.terms.checked;
+    console.log(email, password, checked);
+
+    setRegisterError("");
+    setRegisterSuccess("");
 
     if (password.length < 6) {
       setRegisterError("Password should be contain atleast 6 character");
@@ -27,20 +31,23 @@ const Register = () => {
       setRegisterError(
         "Password should be contain atleast one lowercase character"
       );
+      return;
     } else if (!/[0-9]/.test(password)) {
       setRegisterError("Password should be contain atleast one Number ");
+      return;
+    } else if (!checked) {
+      setRegisterError("Please accept our terms and conditions");
+      return;
     }
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((result) => {
         console.log(result.user);
-        setRegisterError("");
 
         setRegisterSuccess("Account Created Successfully");
       })
       .catch((error) => {
         setRegisterError("Already Registerd using this email");
-        setRegisterSuccess("");
       });
   };
 
@@ -71,10 +78,10 @@ const Register = () => {
           </span>
         </div>
 
-        <label className="flex gap-2 items-center mt-3 mb-3 cursor-pointer">
+        <label className="flex gap-2 items-center mt-4 mb-3 cursor-pointer">
           <input
             type="checkbox"
-            defaultChecked
+            name="terms"
             className="checkbox checkbox-primary"
           />
           <span className="">
