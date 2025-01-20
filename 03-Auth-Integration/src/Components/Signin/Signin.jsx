@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useContext } from "react";
+import { authContext } from "../../Provider/AuthProvider";
 
 const Signin = () => {
+  const { singInUser } = useContext(authContext);
+
+  const handleSignInForm = (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    console.log(email, password);
+
+    singInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <h1 className="text-3xl text-white mt-10 font-bold">Please Sign in</h1>
       <div className="hero">
         <div className="card bg-base-300 w-full max-w-sm shrink-0 shadow-2xl mt-5">
-          <form className="card-body">
+          <form onSubmit={handleSignInForm} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
