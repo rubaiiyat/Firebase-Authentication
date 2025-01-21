@@ -10,6 +10,7 @@ import Home from "./Components/Home/Home.jsx";
 import AuthProvider from "./Provider/AuthProvider.jsx";
 import Oders from "./Components/Oders/Oders.jsx";
 import PrivateRoute from "./PrivateRoute/PrivateRoute.jsx";
+import Profile from "./Components/Profile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Oders></Oders>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
           </PrivateRoute>
         ),
       },
