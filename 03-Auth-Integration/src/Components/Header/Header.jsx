@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
+import { FaUser } from "react-icons/fa";
 
 const Header = () => {
   const { user, logOut } = useContext(authContext);
@@ -59,13 +60,36 @@ const Header = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <span>{user.email}</span>
+              <div className="dropdown">
+                <div tabIndex={0} role="button" className="btn m-1">
+                  <FaUser /> user
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow text-white"
+                >
+                  <li>
+                    <a className="text-lg ">{user.email}</a>
+                  </li>
+                  <li>
+                    <a>Leaderboard</a>
+                  </li>
+                  <li>
+                    <a>Student Analysis</a>
+                  </li>
+                </ul>
+              </div>
               <a onClick={handleLogout} className="btn">
                 Logout
               </a>
             </>
           ) : (
-            ""
+            <Link
+              to="/signin"
+              className="text-xl text-white flex gap-1 items-center"
+            >
+              <FaUser /> user
+            </Link>
           )}
         </div>
       </div>
