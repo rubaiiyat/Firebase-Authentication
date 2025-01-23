@@ -12,12 +12,12 @@ const Home = () => {
       <BreakingNews></BreakingNews>
       <Navbar></Navbar>
 
-      <div className="grid grid-col-1 md:grid-cols-4">
+      <div className="grid grid-col-1 md:grid-cols-4 mt-5">
         <div>
           <LeftSideNav></LeftSideNav>
         </div>
         <div className="grid col-span-1 md:col-span-2 ">
-          <h1>This is news home</h1>
+          <h1 className="">This is news home</h1>
         </div>
         <div>
           <RightSideNav></RightSideNav>

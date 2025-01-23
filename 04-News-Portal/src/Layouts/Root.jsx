@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 const Root = () => {
   return (
-    <div className="text-center mx-5 md:mx-10 lg:mx-44">
+    <div className="mx-5 md:mx-10 lg:mx-44">
       <Outlet></Outlet>
     </div>
   );
