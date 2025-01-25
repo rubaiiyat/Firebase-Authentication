@@ -13,6 +13,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/career"}>Career</NavLink>
       </li>
+      <li>
+        <NavLink to={"/register"}>Register</NavLink>
+      </li>
     </>
   );
   return (
@@ -52,7 +55,9 @@ const Navbar = () => {
           <div className="border-2 border-black p-2 rounded-full bg-white">
             <FaUser className="text-black text-xl" />
           </div>
-          <a className="btn">Button</a>
+          <NavLink to={"/login"} className="btn">
+            Login
+          </NavLink>
         </div>
       </div>
     </div>

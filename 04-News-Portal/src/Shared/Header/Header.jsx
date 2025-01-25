@@ -5,10 +5,10 @@ const Header = () => {
   return (
     <div className="mx-auto mt-5">
       <img className="mx-auto mb-1" src={logo} alt="" />
-      <h1 className="mb- text-lg text-white">
+      <h1 className="text-center text-lg text-white">
         Journalism Without Fear or Favour
       </h1>
-      <h1 className="text-lg text-white mb-5">
+      <h1 className="text-center text-lg text-white mb-5">
         {" "}
         {moment().format("dddd, MMMM Do YYYY")}
       </h1>
