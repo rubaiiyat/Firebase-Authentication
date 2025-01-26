@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { authContext } from "../../AuthProvider/AuthProvider";
 const Navbar = () => {
+  const { user, logOut } = useContext(authContext);
+
+  const handlelogOut = () => {
+    logOut();
+  };
+
   const links = (
     <>
       <li>
@@ -55,9 +62,16 @@ const Navbar = () => {
           <div className="border-2 border-black p-2 rounded-full bg-white">
             <FaUser className="text-black text-xl" />
           </div>
-          <NavLink to={"/login"} className="btn">
-            Login
-          </NavLink>
+
+          {user ? (
+            <button className="btn" onClick={handlelogOut}>
+              Logout
+            </button>
+          ) : (
+            <NavLink to={"/login"} className="btn">
+              Login
+            </NavLink>
+          )}
         </div>
       </div>
     </div>
